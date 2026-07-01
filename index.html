@@ -1,231 +1,438 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Art of Programming</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeForge Academy</title>
 </head>
 <body>
   <style>
-      body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-        background-color: #f3f5f9;
-        color: #1a1a1a;
-      }
-      .page-layout {
-        display: flex;
-        min-height: 100vh;
-      }
-      .sidebar {
-        width: 70px;
-        background-color: #072f57;
-        color: #ffffff;
-        padding: 28px 18px;
-        box-sizing: border-box;
-        overflow: hidden;
-        position: relative;
-        transition: width 0.25s ease;
-      }
-      .sidebar:hover {
-        width: 260px;
-      }
-      .sidebar::before {
-        content: "☰";
-        position: absolute;
-        top: 28px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 1.3rem;
-        color: #eef2f9;
-      }
-      .sidebar .logo,
-      .sidebar .search-form,
-      .sidebar-nav {
-        opacity: 0;
-        transform: translateX(-10px);
-        transition: opacity 0.25s ease, transform 0.25s ease;
-      }
-      .sidebar:hover .logo,
-      .sidebar:hover .search-form,
-      .sidebar:hover .sidebar-nav {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      .sidebar .logo {
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-bottom: 26px;
-      }
-      .search-form {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 26px;
-      }
-      .search-form input {
-        flex: 1;
-        padding: 8px 10px;
-        border: none;
-        border-radius: 4px;
-      }
-      .sidebar:hover .search-form input,
-      .sidebar:hover .search-form button {
-        display: inline-flex;
-      }
-      .search-form button {
-        padding: 8px 12px;
-        border: none;
-        border-radius: 4px;
-        background-color: #1b76d1;
-        color: white;
-        cursor: pointer;
-      }
-      .search-form button:hover {
-        background-color: #1665ad;
-      }
-      .sidebar-nav {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-      .sidebar-nav a {
-        color: #eef2f9;
-        text-decoration: none;
-        padding: 10px 12px;
-        border-radius: 6px;
-      }
-      .sidebar-nav a:hover {
-        background-color: rgba(255, 255, 255, 0.12);
-      }
-      .main-content {
-        flex: 1;
-        padding: 34px 40px;
-        background-color: #ffffff;
-      }
-      .main-content h1 {
-        font-size: 2rem;
-        margin-top: 0;
-        margin-bottom: 18px;
-      }
-      .button-bar {
-        margin: 18px 0 28px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px 16px;
-        border-radius: 5px;
-        border: none;
-        background-color: #1b76d1;
-        color: white;
-        text-decoration: none;
-        font-weight: 600;
-        cursor: pointer;
-      }
-      .button:hover {
-        background-color: #1665ad;
-      }
-      .button.secondary {
-        background-color: #4d5f79;
-      }
-      .button.secondary:hover {
-        background-color: #3a4f69;
-      }
-      .main-content p {
-        margin: 0 0 20px;
-      }
-      .footer {
-        background-color: #072f57;
-        color: #eef2f9;
-        padding: 28px 40px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 18px;
-        border-top: 1px solid rgba(255,255,255,0.08);
-      }
-      .footer-col {
-        min-width: 180px;
-        max-width: 320px;
-      }
-      .footer-title {
-        font-weight: 700;
-        margin-bottom: 12px;
-      }
-      .footer a {
-        color: #b8c6e8;
-        text-decoration: none;
-      }
-      .footer a:hover {
-        text-decoration: underline;
-      }
-      .footer small {
-        display: block;
-        margin-top: 12px;
-        color: #a9b8d8;
-      }
-    </style>
+    :root {
+      --bg: #0b1524;
+      --panel: rgba(255,255,255,0.06);
+      --panel-border: rgba(255,255,255,0.10);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #8b5cf6;
+      --accent-strong: #4f46e5;
+    }
 
-  <div class="page-layout">
-    <aside class="sidebar">
-      <div class="logo">The Art of Programming</div>
-      <form class="search-form" action="/search" method="get">
-        <input type="text" name="q" placeholder="Search...">
-        <button type="submit">Go</button>
-      </form>
-      <nav class="sidebar-nav">
-        <a href="index.html">Home</a>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top left, rgba(99, 102, 241, 0.18), transparent 28%),
+                  linear-gradient(180deg, #0b1524 0%, #0e1b33 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 40px;
+      background: rgba(11, 21, 36, 0.94);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.45rem;
+      letter-spacing: 0.04em;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: 0.97rem;
+      padding: 10px 14px;
+      border-radius: 999px;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .nav-link:hover {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+    }
+
+    .main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 40px 40px 80px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+      min-height: 460px;
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-size: clamp(3rem, 4.5vw, 4.8rem);
+      line-height: 0.98;
+    }
+
+    .hero-copy p {
+      margin: 28px 0 0;
+      max-width: 610px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.85;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 999px;
+      padding: 16px 28px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .button-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    }
+
+    .button-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-stack {
+      display: grid;
+      gap: 18px;
+      padding: 30px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+    }
+
+    .hero-stack .stat {
+      display: grid;
+      gap: 12px;
+      padding: 18px 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+    }
+
+    .hero-stack .stat strong {
+      font-size: 1.75rem;
+      display: block;
+    }
+
+    .hero-stack .stat span {
+      color: var(--muted);
+    }
+
+    .banner {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .banner-card {
+      padding: 24px 26px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .banner-card h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+
+    .banner-card p {
+      margin: 16px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .section {
+      margin-top: 56px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(2rem, 2.5vw, 2.5rem);
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+      margin-top: 28px;
+    }
+
+    .feature-card,
+    .course-card,
+    .panel-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 24px;
+      padding: 26px;
+      min-height: 190px;
+    }
+
+    .feature-card h3,
+    .course-card h3,
+    .panel-card h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .feature-card p,
+    .course-card p,
+    .panel-card p {
+      margin: 16px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(139,92,246,0.18);
+      color: #e9d5ff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-top: 18px;
+    }
+
+    .footer {
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      padding-top: 42px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .footer h4 {
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    .footer p,
+    .footer a,
+    .footer small {
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .footer a {
+      display: block;
+      margin-top: 10px;
+    }
+
+    .footer a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .banner { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      header { padding: 20px 18px; }
+      .main { padding: 28px 22px 60px; }
+      .section-heading { flex-direction: column; align-items: flex-start; }
+      .nav { gap: 12px; }
+    }
+  </style>
+
+  <header>
+    <div class="brand">CodeForge Academy</div>
+    <nav class="nav">
+      <a class="nav-link" href="#features">Features</a>
+      <a class="nav-link" href="#courses">Courses</a>
+      <a class="nav-link" href="#community">Community</a>
+      <a class="nav-link" href="introduction.html">Introduction</a>
+      <a class="nav-link" href="history.html">History</a>
+      <a class="nav-link" href="programming-languages.html">Languages</a>
+      <a class="nav-link" href="resources.html">Resources</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="tag">Learn by building real projects</p>
+        <h1>A smarter way to master coding and launch your next idea.</h1>
+        <p>CodeForge Academy blends guided lessons, hands-on projects, and helpful feedback to make learning practical and exciting.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="introduction.html">Start learning</a>
+          <a class="button button-secondary" href="programming-languages.html">View paths</a>
+        </div>
+        <div class="banner">
+          <div class="banner-card">
+            <h3>Live coding practice</h3>
+            <p>Write code directly in your browser, see instant results, and build confidence fast.</p>
+          </div>
+          <div class="banner-card">
+            <h3>Project-based modules</h3>
+            <p>Complete real apps that look great in your portfolio and show employers you can ship work.</p>
+          </div>
+          <div class="banner-card">
+            <h3>Community support</h3>
+            <p>Ask questions, get feedback, and stay motivated with thousands of learners in one place.</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-stack">
+        <div class="stat">
+          <strong>1.5M+</strong>
+          <span>engaged learners</span>
+        </div>
+        <div class="stat">
+          <strong>150+</strong>
+          <span>skills taught</span>
+        </div>
+        <div class="stat">
+          <strong>94%</strong>
+          <span>student satisfaction</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="section-heading">
+        <h2>Build skills with purpose</h2>
+        <a class="button button-secondary" href="resources.html">Explore resources</a>
+      </div>
+      <div class="grid-cards">
+        <article class="feature-card">
+          <h3>Interactive lessons</h3>
+          <p>Learn core concepts through short exercises designed for speed and clarity.</p>
+          <span class="tag">Beginner friendly</span>
+        </article>
+        <article class="feature-card">
+          <h3>Portfolio-ready projects</h3>
+          <p>Create polished applications you can show to recruiters or use in your own work.</p>
+          <span class="tag">Hands on</span>
+        </article>
+        <article class="feature-card">
+          <h3>Clear progress tracking</h3>
+          <p>Follow guided learning paths and see your growth after every lesson.</p>
+          <span class="tag">Goal oriented</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="courses">
+      <div class="section-heading">
+        <h2>Popular learning paths</h2>
+        <a class="button button-secondary" href="programming-languages.html">View languages</a>
+      </div>
+      <div class="grid-cards">
+        <article class="course-card">
+          <h3>Web Development</h3>
+          <p>Start building responsive websites and interactive apps using HTML, CSS, and JavaScript.</p>
+          <span class="tag">Web</span>
+        </article>
+        <article class="course-card">
+          <h3>JavaScript Essentials</h3>
+          <p>Master the foundation of modern web development with easy-to-follow examples.</p>
+          <span class="tag">JavaScript</span>
+        </article>
+        <article class="course-card">
+          <h3>Backend Fundamentals</h3>
+          <p>Learn how servers, APIs, and databases work together to power real applications.</p>
+          <span class="tag">Backend</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="community">
+      <div class="section-heading">
+        <h2>Join the community</h2>
+        <a class="button button-primary" href="contact.html">Get help</a>
+      </div>
+      <div class="panel-card">
+        <h3>Connect with learners and mentors</h3>
+        <p>Share progress, get feedback, and keep building with support from people who are learning alongside you.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h4>CodeForge Academy</h4>
+        <p>Create real skills with a learning experience designed for fast progress and long-term confidence.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
         <a href="introduction.html">Introduction</a>
         <a href="history.html">History</a>
-        <a href="programming-languages.html">Programming Languages</a>
-        <a href="resources.html">Resources</a>
+        <a href="programming-languages.html">Languages</a>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <a href="resources.html">Guides</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-      </nav>
-    </aside>
-    <main class="main-content">
-      <div class="button-bar">
-      </div>  
-<nav class="" aria-label="Breadcrumb">
-  <ol class="breadcrumb">
-   
-</nav>
-<section>
-
-      <h1>Welcome to The Art of Programming</h1>
-      <p>This website is dedicated to providing comprehensive resources and insights into the world of programming. 
-        Whether you're a beginner or an experienced developer, you'll find valuable information here.</p>
-
-        <img src="images/lake-zurich-switzerland-landscape-green-trees-mountain-3840x2160-4062.jpg" alt="Programming" style="max-width: 1080px; height: auto;">
-      </section>  
-
-  </div>
-  <footer class="footer">
-    <div class="footer-col">
-      <div class="footer-title">The Art of Programming</div>
-      <p>Learn key programming concepts, tools, and workflows through a modern and easy-to-navigate layout.</p>
-      <small>Designed for beginners and experienced developers alike.</small>
-    </div>
-    <div class="footer-col">
-      <div class="footer-title">Quick Links</div>
-      <a href="introduction.html">Introduction</a><br>
-      <a href="history.html">History</a><br>
-      <a href="programming-languages.html">Programming Languages</a><br>
-      <a href="resources.html">Resources</a><br>
-      <a href="about.html">About</a><br>
-      <a href="contact.html">Contact</a>
-    </div>
-    <div class="footer-col">
-      <div class="footer-title">Contact</div>
-      <p>Email: info@example.com</p>
-      <p><small>&copy; 2026 The Art of Programming. All rights reserved.</small></p>
-    </div>
-  </footer>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:hello@codeforge.com">hello@codeforge.com</a>
+        <small>&copy; 2026 CodeForge Academy</small>
+      </div>
+    </footer>
+  </main>
 </body>
 </html>
