@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Art of Programming</title>
+    <title>Resources - The Art of Programming</title>
 </head>
 <body>
   <style>
@@ -20,41 +20,13 @@
         min-height: 100vh;
       }
       .sidebar {
-        width: 70px;
+        width: 260px;
         background-color: #072f57;
         color: #ffffff;
         padding: 28px 18px;
         box-sizing: border-box;
-        overflow: hidden;
-        position: relative;
-        transition: width 0.25s ease;
       }
-      .sidebar:hover {
-        width: 260px;
-      }
-      .sidebar::before {
-        content: "☰";
-        position: absolute;
-        top: 28px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 1.3rem;
-        color: #eef2f9;
-      }
-      .sidebar .logo,
-      .sidebar .search-form,
-      .sidebar-nav {
-        opacity: 0;
-        transform: translateX(-10px);
-        transition: opacity 0.25s ease, transform 0.25s ease;
-      }
-      .sidebar:hover .logo,
-      .sidebar:hover .search-form,
-      .sidebar:hover .sidebar-nav {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      .sidebar .logo {
+      .logo {
         font-size: 1.3rem;
         font-weight: 700;
         margin-bottom: 26px;
@@ -69,10 +41,6 @@
         padding: 8px 10px;
         border: none;
         border-radius: 4px;
-      }
-      .sidebar:hover .search-form input,
-      .sidebar:hover .search-form button {
-        display: inline-flex;
       }
       .search-form button {
         padding: 8px 12px;
@@ -137,40 +105,7 @@
       .button.secondary:hover {
         background-color: #3a4f69;
       }
-      .main-content p {
-        margin: 0 0 20px;
-      }
-      .footer {
-        background-color: #072f57;
-        color: #eef2f9;
-        padding: 28px 40px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 18px;
-        border-top: 1px solid rgba(255,255,255,0.08);
-      }
-      .footer-col {
-        min-width: 180px;
-        max-width: 320px;
-      }
-      .footer-title {
-        font-weight: 700;
-        margin-bottom: 12px;
-      }
-      .footer a {
-        color: #b8c6e8;
-        text-decoration: none;
-      }
-      .footer a:hover {
-        text-decoration: underline;
-      }
-      .footer small {
-        display: block;
-        margin-top: 12px;
-        color: #a9b8d8;
-      }
-    </style>
+  </style>
 
   <div class="page-layout">
     <aside class="sidebar">
@@ -191,20 +126,13 @@
     </aside>
     <main class="main-content">
       <div class="button-bar">
-      </div>  
-<nav class="" aria-label="Breadcrumb">
-  <ol class="breadcrumb">
-   
-</nav>
-<section>
-
-      <h1>Welcome to The Art of Programming</h1>
-      <p>This website is dedicated to providing comprehensive resources and insights into the world of programming. 
-        Whether you're a beginner or an experienced developer, you'll find valuable information here.</p>
-
-        <img src="images/lake-zurich-switzerland-landscape-green-trees-mountain-3840x2160-4062.jpg" alt="Programming" style="max-width: 1080px; height: auto;">
-      </section>  
-
+        <a class="button" href="index.html">Home</a>
+        <button class="button secondary" onclick="history.back()">Back</button>
+      </div>
+      <h1>Resources</h1>
+      <p>This page lists resources related to programming, such as guides and tools.
+      </p>
+    </main>
   </div>
   <footer class="footer">
     <div class="footer-col">
@@ -214,6 +142,7 @@
     </div>
     <div class="footer-col">
       <div class="footer-title">Quick Links</div>
+      <a href="index.html">Home</a><br>
       <a href="introduction.html">Introduction</a><br>
       <a href="history.html">History</a><br>
       <a href="programming-languages.html">Programming Languages</a><br>
